@@ -1,0 +1,473 @@
+{% extends "blog/base.html" %}
+{% block content %}
+
+  
+    
+<style>
+br {
+    line-height: 2px;
+ }
+  /* The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
+.flip-card {
+  background-color: transparent;
+  border-radius: 25px;
+  width: 500px;
+  height: 270px;
+  border: 1px solid #f1f1f1;
+  perspective: 1000px; /* Remove this if you don't want the 3D effect */
+
+  border-width: 10px;
+}
+
+/* This container is needed to position the front and back side */
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  border-radius: 25px;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+/* Do an horizontal flip when you move the mouse over the flip box container */
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+/* Position the front and back side */
+.flip-card-front, .flip-card-back {
+  text-align: center;
+  position: absolute;
+  width: 100%;
+  border-radius: 25px;
+  height: 100%;
+  backface-visibility: hidden;
+}
+
+/* Style the front side (fallback if image is missing) */
+.flip-card-front {
+  padding-top:50px;
+  text-align: center;
+  background-color: pink ;
+  border-radius: 25px;
+  border-width: thick;
+  color: black;
+}
+
+/* Style the back side */
+.flip-card-back {
+  padding-top:30px;
+  padding-left:20px;
+  padding-right:20px;
+  background-color: #f7eeee;
+  color: black;
+  border-radius: 25px;
+  border-color:white;
+  border-width: thick;
+  transform: rotateY(180deg);
+}  
+
+    /* DEMO-SPECIFIC STYLES */
+    *{
+  margin:0;
+  padding:0;
+}
+
+h2,p{
+  font-size:100%;
+  font-weight:normal;
+}
+ul,li{
+  list-style:none;
+}
+ul{
+  overflow:hidden;
+  padding:3em;
+}
+ul li a{
+  text-decoration:none;
+  color:#000;
+  background:#ffc;
+  display:block;
+  height:5em;
+  width:7em;
+  padding:1em;
+  -moz-box-shadow:5px 5px 7px rgba(33,33,33,1);
+  -webkit-box-shadow: 5px 5px 7px rgba(33,33,33,.7);
+  box-shadow: 5px 5px 7px rgba(33,33,33,.7);
+  -moz-transition:-moz-transform .15s linear;
+  -o-transition:-o-transform .15s linear;
+  -webkit-transition:-webkit-transform .15s linear;
+}
+ul li{
+  margin:1em;
+  float:left;
+}
+ul li h2{
+  font-size:140%;
+  font-weight:bold;
+  padding-bottom:10px;
+}
+ul li p{
+  font-family:"Reenie Beanie",arial,sans-serif;
+  font-size:180%;
+}
+ul li a{
+  -webkit-transform: rotate(-6deg);
+  -o-transform: rotate(-6deg);
+  -moz-transform:rotate(-6deg);
+}
+ul li:nth-child(even) a{
+  -o-transform:rotate(4deg);
+  -webkit-transform:rotate(4deg);
+  -moz-transform:rotate(4deg);
+  position:relative;
+  top:5px;
+  background:#cfc;
+}
+ul li:nth-child(3n) a{
+  -o-transform:rotate(-3deg);
+  -webkit-transform:rotate(-3deg);
+  -moz-transform:rotate(-3deg);
+  position:relative;
+  top:-5px;
+  background:#ccf;
+}
+ul li:nth-child(5n) a{
+  -o-transform:rotate(5deg);
+  -webkit-transform:rotate(5deg);
+  -moz-transform:rotate(5deg);
+  position:relative;
+  top:-10px;
+}
+ul li a:hover,ul li a:focus{
+  box-shadow:10px 10px 7px rgba(0,0,0,.7);
+  -moz-box-shadow:10px 10px 7px rgba(0,0,0,.7);
+  -webkit-box-shadow: 10px 10px 7px rgba(0,0,0,.7);
+  -webkit-transform: scale(1.25);
+  -moz-transform: scale(1.25);
+  -o-transform: scale(1.25);
+  position:relative;
+  z-index:5;
+}
+ol{text-align:center;}
+ol li{display:inline;padding-right:1em;}
+ol li a{color:#fff;}
+    .typewriter h1 {
+      color: #fff;
+      font-family: monospace;
+      overflow: hidden; /* Ensures the content is not revealed until the animation */
+      border-right: .15em solid orange; /* The typwriter cursor */
+      white-space: nowrap; /* Keeps the content on a single line */
+      margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+      letter-spacing: .15em; /* Adjust as needed */
+      animation: 
+        typing 3.5s steps(30, end),
+        blink-caret .5s step-end infinite;
+    }
+
+    /* The typing effect */
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+
+    /* The typewriter cursor effect */
+    @keyframes blink-caret {
+      from, to { border-color: transparent }
+      50% { border-color: orange }
+    }
+        .media {
+            margin-left:100px;
+            font-family: "Roboto", sans-serif;
+            font-size: 18px;
+            background-color: #f7eeee;
+            border: 5px solid pink;
+            border-radius: 25px;
+            width: 1000px;
+            height: 175px;
+            
+           
+             
+        }
+        
+        .media-body {
+            padding-left:50px;
+            box-shadow: 0 16px 48px #f7eeee;
+            right: 2000px;
+            
+           
+        }
+        
+        
+
+        .h7 {
+            font-size: 0.8rem;
+            color: white;
+        }
+
+        .gedf-wrapper {
+            margin-top: 0.97rem;
+            border-radius:25px;
+            padding-left:20px;
+            
+            
+        }
+
+        @media (min-width: 992px) {
+            .gedf-main {
+                padding-left: 4rem;
+                padding-right: 4rem;
+                border-radius:25px;
+                
+                
+            }
+            .gedf-card {
+                margin-bottom: 2.77rem;
+		margin-left: 5px;
+                border-radius:25px;
+                padding-left:5;
+                border-color:pink;
+                border-width:7px;
+            }
+        }
+
+        /**Reset Bootstrap*/
+        .dropdown-toggle::after {
+            content: none;
+            display: none;
+        }
+    </style>
+      
+        <header class="masthead">
+          <div class="overlay"></div>
+          <div class="container">
+              <div class="row">
+                  <div class=" col-md-8 col-md-10 mx-auto">
+                      <div class="site-heading">
+                          <div class="typewriter"> <h1 class=" site-heading my-4 mt-3 text-white"> Welcome to Chirper! </h1></div>
+                          <p class="text-light">Where we post about what makes us passionate &nbsp
+                          </p>
+                      </div>
+                  </div>
+              </div>
+      </header>
+      
+
+   
+      <p>&nbsp;</p>
+          {% for post in posts %}
+      <!--- \\\\\\\Post-->
+      <div class="card gedf-card">
+        <div class="card-header">
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="mr-2">
+                        <img class="rounded-circle" width="45" src="{{ post.author.profile.image.url }}" alt="">
+                    </div>
+                    <div class="ml-2">
+                        <a class="card-link" href="{% url 'user-posts' post.author.username %}">{{ post.author }}</a>
+                    </div>
+                </div>
+                <div>
+                </div>
+            </div>
+
+        </div>
+        <div class="card-body">
+            <div class="text-muted h7 mb-2"> <i class="fa fa-clock-o"></i>{{ post.date_posted|date:"F d, Y" }}</div>
+         
+                <h5 class="card-title">{{ post.title }}</h5>
+            </a>
+
+            <p class="card-text">
+                {{ post.content }}
+            </p>
+        </div>
+        <div class="card-footer">
+            <a href="#" class="card-link"><i class="fa fa-gittip"></i> Like</a>
+            <a href="#" class="card-link"><i class="fa fa-comment"></i> Comment</a>
+            <a href="#" class="card-link"><i class="fa fa-mail-forward"></i> Share</a>
+        </div>
+    </div>
+    <!-- Post /////-->
+      
+    {% endfor %}
+    
+
+
+    
+
+    {% if is_paginated %}
+
+    {% if page_obj.has_previous %}
+      <a class="btn btn-outline-info mb-4" href="?page=1">First</a>
+      <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+    {% endif %}
+
+    {% for num in page_obj.paginator.page_range %}
+      {% if page_obj.number == num %}
+        <a class="btn btn-info mb-4" href="?page={{ num }}">{{ num }}</a>
+      {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+        <a class="btn btn-outline-info mb-4" href="?page={{ num }}">{{ num }}</a>
+      {% endif %}
+    {% endfor %}
+
+    {% if page_obj.has_next %}
+      <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.next_page_number }}">Next</a>
+      <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.paginator.num_pages }}">Last</a>
+    {% endif %}
+
+  {% endif %}
+{% endblock content %}
+
+{% block sidebar %}
+
+<style>
+@import url("https://fonts.googleapis.com/css?family=Luckiest+Guy");
+/* BODY */
+body {
+  font-family: "Luckiest Guy", cursive;
+  -webkit-font-smoothing: antialiased;
+ 
+}
+
+/* CLOUDS */
+body:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  margin: auto;
+  border-radius: 100%;
+  background: transparent;
+  display: block;
+  box-shadow: 0 0 150px 100px rgba(255, 255, 255, 0.6),
+    200px 0 200px 150px rgba(255, 255, 255, 0.6),
+    -250px 0 300px 150px rgba(255, 255, 255, 0.6),
+    550px 0 300px 200px rgba(255, 255, 255, 0.6),
+    -550px 0 300px 200px rgba(255, 255, 255, 0.6);
+}
+/* JUMP */
+
+
+h1 span {
+  position: relative;
+  top: 5px;
+  display: inline-block;
+  -webkit-animation: bounce 0.3s ease infinite alternate;
+  font-size: 40px;
+  color: white;
+  text-shadow: 0 1px 0 #ccc, 0 2px 0 #ccc, 0 3px 0 #ccc, 0 4px 0 #ccc,
+    0 5px 0 #ccc, 0 6px 0 transparent, 0 7px 0 transparent, 0 8px 0 transparent,
+    0 9px 0 transparent, 0 10px 10px rgba(0, 0, 0, 0.4);
+}
+
+h1 span:nth-child(2) {
+  -webkit-animation-delay: 0.1s;
+}
+
+h1 span:nth-child(3) {
+  -webkit-animation-delay: 0.2s;
+}
+
+h1 span:nth-child(4) {
+  -webkit-animation-delay: 0.3s;
+}
+
+h1 span:nth-child(5) {
+  -webkit-animation-delay: 0.4s;
+}
+
+h1 span:nth-child(6) {
+  -webkit-animation-delay: 0.5s;
+}
+
+h1 span:nth-child(7) {
+  -webkit-animation-delay: 0.6s;
+}
+
+h1 span:nth-child(8) {
+  -webkit-animation-delay: 0.2s;
+}
+
+h1 span:nth-child(9) {
+  -webkit-animation-delay: 0.3s;
+}
+
+h1 span:nth-child(10) {
+  -webkit-animation-delay: 0.4s;
+}
+
+h1 span:nth-child(11) {
+  -webkit-animation-delay: 0.5s;
+}
+
+h1 span:nth-child(12) {
+  -webkit-animation-delay: 0.6s;
+}
+
+h1 span:nth-child(13) {
+  -webkit-animation-delay: 0.7s;
+}
+
+h1 span:nth-child(14) {
+  -webkit-animation-delay: 0.8s;
+}
+
+/* ANIMATION */
+@-webkit-keyframes bounce {
+  100% {
+    top: -20px;
+    text-shadow: 0 1px 0 #ccc, 0 2px 0 #ccc, 0 3px 0 #ccc, 0 4px 0 #ccc,
+      0 5px 0 #ccc, 0 6px 0 #ccc, 0 7px 0 #ccc, 0 8px 0 #ccc, 0 9px 0 #ccc,
+      0 50px 25px rgba(0, 0, 0, 0.2);
+  }
+}
+      
+  </style>
+
+  <!-- Sidebar Widgets Column -->
+
+  <div class="col-md-4 float-right ">
+      <p>&nbsp;</p>
+  <div class="flip-card">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+            <h1>
+                <span>A</span>
+                <span>B</span>
+                <span>O</span>
+                <span>U</span>
+                <span>T</span>
+              </br>
+                <span>T</span>
+                <span>H</span>
+                <span>E</span>
+              </br>
+                <span>C</span>
+                <span>R</span>
+                <span>E</span>
+                <span>A</span>
+                <span>T</span>
+                <span>O</span>
+                <span>R</span>
+              </h1>
+        </div>
+        <div class="flip-card-back">
+            <p class="card-header">Sara Abu Hattab</p>
+            <br style="line-height: 5px" />
+            <p class="card-text"> I am a passionate software engineering student with a wide skill set who is currently exploring web development and data science as hobbies and as career options. Visit my LinkedIn page to learn more!  </p>
+            <a href="https://www.linkedin.com/in/sabuhattab/"
+            class="btn btn-danger">Sara's LinkedIn!</a>
+        </div>
+      </div>
+    </div>
+    <p>&nbsp;</p>
+  </div>
+
+{% endblock sidebar %}
